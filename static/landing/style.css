@@ -1,0 +1,317 @@
+:root {
+    --v-bg: #050505;
+    --v-accent: #ff2d55; /* Vibrant Red-Pink */
+    --v-secondary: #007aff; /* Pro Blue */
+    --v-text: #ffffff;
+    --v-text-muted: #888888;
+    --v-card-bg: #111111;
+    --v-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--v-bg);
+    color: var(--v-text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+/* ===== NAVBAR ===== */
+.v-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 10%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+}
+
+.v-links {
+    display: flex;
+    gap: 30px;
+}
+
+.v-link {
+    color: var(--v-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.v-link:hover {
+    color: var(--v-text);
+}
+
+.v-logo {
+    height: 54px;
+    object-fit: contain;
+}
+
+/* ===== HERO ===== */
+.v-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10% 0 10%;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.v-hero-text {
+    flex: 1.5;
+}
+
+.v-title {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 20px;
+}
+
+.v-accent-text {
+    color: var(--v-accent);
+}
+
+.v-subtitle {
+    font-size: 20px;
+    color: var(--v-text-muted);
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+
+.v-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.v-btn-buy {
+    background: var(--v-accent);
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 20px rgba(255, 45, 85, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.v-btn-buy:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 45, 85, 0.5);
+}
+
+.v-tag {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.v-hero-img-wrap {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.v-hero-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--v-accent) 0%, transparent 70%);
+    opacity: 0.3;
+    filter: blur(60px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.v-pro-card {
+    width: 380px;
+    height: 500px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+    border: 1px solid var(--v-border);
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: -40px 40px 80px rgba(0,0,0,0.5);
+}
+
+.v-pro-header {
+    font-size: 30px;
+    font-weight: 800;
+    color: #444;
+}
+
+.v-pro-stat {
+    font-size: 100px;
+    font-weight: 900;
+    background: linear-gradient(180deg, #333 0%, #111 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===== BENTO GRID ===== */
+.v-bento {
+    padding: 100px 10%;
+    margin-top: -80px;
+}
+
+.v-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 350px);
+    gap: 20px;
+}
+
+.v-card {
+    background-color: var(--v-card-bg);
+    border: 1px solid var(--v-border);
+    border-radius: 40px;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.v-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Mouse Glow Effect */
+.v-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.v-card-large {
+    grid-column: span 3;
+}
+
+.v-card-small {
+    grid-column: span 1;
+}
+
+.v-card-title {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.v-card-min-title {
+    color: var(--v-text-muted);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+/* STATS */
+.v-stats-row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.v-stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.v-stat-val {
+    font-size: 60px;
+    font-weight: 800;
+    color: var(--v-text);
+}
+
+.v-stat-label {
+    font-size: 12px;
+    color: var(--v-text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.v-stat-arrow {
+    color: var(--v-text-muted);
+    font-size: 30px;
+}
+
+/* VIZ Glows */
+.v-viz {
+    width: 120px;
+    height: 120px;
+    margin-top: 30px;
+}
+
+.v-viz-ring {
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--v-secondary) 0%, transparent 70%);
+    opacity: 0.5;
+    filter: blur(20px);
+}
+
+.v-viz-pulse {
+    border-radius: 50%;
+    background: radial-gradient(circle, #00ffaa 0%, transparent 70%);
+    opacity: 0.5;
+    filter: blur(20px);
+    animation: viz-pulse 2s infinite alternate;
+}
+
+@keyframes viz-pulse {
+    from { opacity: 0.3; transform: scale(0.9); }
+    to { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* Glow Borders */
+.glow-blue:hover { box-shadow: 0 0 30px rgba(0, 122, 255, 0.1); }
+.glow-teal:hover { box-shadow: 0 0 30px rgba(0, 255, 170, 0.1); }
+.glow-pink:hover { box-shadow: 0 0 30px rgba(255, 45, 85, 0.1); }
+
+/* ===== FOOTER ===== */
+.v-footer {
+    padding: 60px 10%;
+    color: var(--v-text-muted);
+    font-size: 13px;
+    text-align: center;
+    border-top: 1px solid var(--v-border);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .v-bento-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    .v-card-large { grid-column: span 2; }
+    .v-title { font-size: 60px; }
+    .v-hero { flex-direction: column; padding-top: 150px; text-align: center; }
+    .v-cta-row { justify-content: center; }
+    .v-hero-img-wrap { margin-top: 50px; justify-content: center; }
+}

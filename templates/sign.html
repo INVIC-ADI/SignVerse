@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignVerse – Sign Language Detection</title>
+    <meta name="description" content="SignVerse Stage 1 – real-time ASL sign language detection using your webcam.">
+
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='sign/style.css') }}">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- HEADER -->
+        <header class="header">
+            <img src="{{ url_for('static', filename='sign/logo11.png') }}" class="logo">
+            <h1 class="stage-title">
+                <span class="stage-blue">SignVerse</span>
+                <span class="stage-teal">Sign Language Detection</span>
+            </h1>
+            <div class="lang-toggle-wrap" style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+                <span class="toggle-opt" id="engLabel">EN</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="langToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="toggle-opt" id="hinLabel">HI</span>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <div class="content-grid">
+
+            <!-- CAMERA CARD -->
+            <div class="card camera-card">
+                <img src="{{ url_for('video_feed') }}" class="camera-feed">
+            </div>
+
+            <!-- REFERENCE CARD -->
+            <div class="card reference-card">
+                <img src="{{ url_for('static', filename='sign/asl_reference.png') }}">
+            </div>
+
+        </div>
+
+        <!-- SENTENCE BAR -->
+        <div class="sentence-card">
+            <label>Detected Sentence</label>
+            <div id="sentence" class="sentence-box">Waiting for sign…</div>
+
+            <div class="buttons">
+                <button id="spaceBtn" class="btn primary">Space</button>
+                <button id="backspaceBtn" class="btn warning">Backspace</button>
+                <button id="clearAllBtn" class="btn danger">Clear All</button>
+                <button id="sendBtn" class="btn success">Send to Chatbot →</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="{{ url_for('static', filename='sign/script.js') }}"></script>
+
+</body>
+
+</html>

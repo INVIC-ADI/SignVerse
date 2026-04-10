@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignVerse – Sign Language Assistant</title>
+    <meta name="description" content="SignVerse chatbot – communicate using sign language with an AI-powered avatar.">
+
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='chatbot/style.css') }}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- LEFT : INTERACTION AREA -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="header-main">
+                    <span>✋ SignVerse</span>
+                    <div class="view-tabs">
+                        <button class="view-tab active" id="tabChat" onclick="switchView('chat')">Chatbot</button>
+                        <button class="view-tab" id="tabTranslator" onclick="switchView('translator')">Translator</button>
+                    </div>
+                </div>
+                
+                <div class="header-controls">
+                    <div class="model-toggle-wrap">
+                        <span class="toggle-opt" id="localLabel">Local</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="modelToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-opt" id="geminiLabel">Gemini ✦</span>
+                    </div>
+                    <!-- Language Toggle -->
+                    <div class="lang-toggle-wrap">
+                        <span class="toggle-opt" id="engLabel">EN</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="langToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-opt" id="hinLabel">HI</span>
+                    </div>
+                    <div id="recording-indicator" class="recording-indicator inactive" title="Camera Status"></div>
+                    <button id="clearBtn" class="clear-only">Clear</button>
+                </div>
+            </div>
+
+            <!-- VIEW 1: CHATBOT -->
+            <div id="chatView" class="view-content active">
+                <div id="chat-box" class="chat-box"></div>
+                <div class="input-area">
+                    <input type="text" id="user-input" placeholder="Type your message..." />
+                    <button id="sendBtn" class="primary-btn">Send 💬</button>
+                    <button id="voiceBtn" class="voice-btn">🎙️</button>
+                    <button id="toggleCameraBtn" class="secondary-btn" title="Toggle Sign Recording">📷</button>
+                    <button id="captureToChatBtn" class="success-btn mini-fab" title="Add sign to chat" disabled>📥</button>
+                </div>
+            </div>
+
+            <!-- VIEW 3: TRANSLATOR -->
+            <div id="translatorView" class="view-content">
+                <div class="translator-container">
+                    <div class="trans-section">
+                        <label class="trans-label">Text Input</label>
+                        <textarea id="trans-input" class="trans-textarea" placeholder="Type text to convert to sign..."></textarea>
+                        <div class="trans-actions">
+                            <button id="transSignBtn" class="primary-btn">Sign It 🤟</button>
+                            <button id="transTranslateBtn" class="secondary-btn">Translate to HI 🇮🇳</button>
+                        </div>
+                    </div>
+                    
+                    <div class="trans-divider">
+                        <div class="line"></div>
+                        <div class="icon">🔄</div>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="trans-section">
+                        <label class="trans-label">Sign Detection Output</label>
+                        <div id="trans-output" class="trans-output-box">Sign to the camera to see results here...</div>
+                        <div class="trans-actions">
+                            <button id="transToggleCameraBtn" class="secondary-btn" title="Start Recording">📷</button>
+                            <button id="transStopBtn" class="stop-btn" style="padding: 11px 16px;">Stop ⏹️</button>
+                            <button id="transFetchBtn" class="secondary-btn">Refresh</button>
+                            <button id="transCopyBtn" class="success-btn">Copy to Chat 💬</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT : AVATAR -->
+        <div class="video-container">
+            <div class="video-header">
+                <span>🧍 Sign Avatar</span>
+                <div class="video-controls">
+                    <button id="replayBtn" class="replay-btn">Replay</button>
+                    <button id="stopBtn" class="stop-btn">Stop ⏹️</button>
+                </div>
+            </div>
+
+            <div class="video-box">
+                <video id="signVideo" muted playsinline></video>
+                
+                <!-- REPOSITIONED CAMERA FEED (PIP) -->
+                <div id="pip-camera-wrap" class="pip-camera-wrap">
+                    <img id="live-feed" src="" class="live-feed-img" alt="Camera Feed">
+                    <div id="live-prediction-overlay" class="live-overlay"></div>
+                    <div id="live-text-result" class="live-pip-result"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='chatbot/script.js') }}"></script>
+</body>
+
+</html>

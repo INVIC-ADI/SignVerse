@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignVerse | All the Level Ups You've Been Waiting For</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing/style.css') }}">
+</head>
+<body>
+    
+    <header class="v-navbar">
+        <div class="v-links">
+            <a href="#features" class="v-link">Features</a>
+            <a href="/chatbot" class="v-link">Chatbot</a>
+            <a href="/" class="v-link">Detection</a>
+        </div>
+        <div class="v-logo-area">
+            <img src="{{ url_for('static', filename='sign/logo11.png') }}" class="v-logo" alt="SignVerse">
+        </div>
+    </header>
+
+    <main class="v-hero">
+        <div class="v-hero-text">
+            <h1 class="v-title">All the <span class="v-accent-text">Level Ups</span><br>You've Been Waiting for</h1>
+            <p class="v-subtitle">The first professional-grade AI solution for seamless sign language integration into daily digital life.</p>
+            <div class="v-cta-row">
+                <a href="/chatbot" class="v-btn-buy">GET STARTED</a>
+                <div class="v-tag">New Evolution</div>
+            </div>
+        </div>
+        <div class="v-hero-img-wrap">
+            <!-- Simulated Pro Graphic -->
+            <div class="v-hero-glow"></div>
+            <div class="v-pro-card">
+                <div class="v-pro-header">SignVerse Pro</div>
+                <div class="v-pro-stat">V.2.0</div>
+            </div>
+        </div>
+    </main>
+
+    <section id="features" class="v-bento">
+        <div class="v-bento-grid">
+            <!-- Feature 1: Main Power -->
+            <div class="v-card v-card-large v-bg-dark">
+                <div class="v-card-content">
+                    <h2 class="v-card-title">Much More <span class="v-accent-text">Powerful</span></h2>
+                    <div class="v-stats-row">
+                        <div class="v-stat-item">
+                            <div class="v-stat-val">10x</div>
+                            <div class="v-stat-label">AI Logic Power</div>
+                        </div>
+                        <div class="v-stat-arrow">↑</div>
+                        <div class="v-stat-item">
+                            <div class="v-stat-val">40x</div>
+                            <div class="v-stat-label">Context Memory</div>
+                        </div>
+                        <div class="v-stat-arrow">↑</div>
+                        <div class="v-stat-item">
+                            <div class="v-stat-val">6x</div>
+                            <div class="v-stat-label">Response Speed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2: No Latency -->
+            <div class="v-card v-card-small v-bg-dark glow-blue">
+                <div class="v-card-content">
+                    <h3 class="v-card-min-title">Instant</h3>
+                    <h2 class="v-card-title">No Latency</h2>
+                    <div class="v-viz v-viz-ring"></div>
+                </div>
+            </div>
+
+            <!-- Feature 3: No Noise -->
+            <div class="v-card v-card-small v-bg-dark glow-teal">
+                <div class="v-card-content">
+                    <h3 class="v-card-min-title">Pure</h3>
+                    <h2 class="v-card-title">Clear Signs</h2>
+                    <div class="v-viz v-viz-pulse"></div>
+                </div>
+            </div>
+
+            <!-- Feature 4: Efficiency -->
+            <div class="v-card v-card-small v-bg-dark">
+                <div class="v-card-content">
+                    <div class="v-stat-val">99% +</div>
+                    <div class="v-stat-label">Prediction Accuracy</div>
+                </div>
+            </div>
+
+            <!-- Feature 5: Multilingual -->
+            <div class="v-card v-card-small v-bg-dark glow-pink">
+                <div class="v-card-content">
+                    <div class="v-stat-val">20% +</div>
+                    <div class="v-stat-label">Faster Conversions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="v-footer">
+        <p>SignVerse &copy; 2026. Part of the Hand2Help Evolution. References to performance are comparative to traditional ML models.</p>
+    </footer>
+
+    <script>
+        // Interactive glow follow
+        document.querySelectorAll('.v-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Entrance animations
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.v-hero').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.v-hero').style.transition = 'opacity 1s ease, transform 1s ease';
+                document.querySelector('.v-hero').style.opacity = '1';
+                document.querySelector('.v-hero').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+flask
+opencv-python==4.7.0.68
+mediapipe==0.10.8
+numpy<2.0
+scikit-learn==1.2.0
+flask-cors
+google-genai
+elevenlabs
+python-dotenv

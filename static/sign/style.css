@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f0f2f5;
+    font-family: 'Inter', sans-serif;
+    color: #1a1a2e;
+    min-height: 100vh;
+}
+
+/* APP WRAPPER */
+.app {
+    max-width: 1280px;
+    margin: auto;
+    padding: 20px 24px;
+}
+
+/* ===== HEADER ===== */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 16px 24px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.stage-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.stage-blue {
+    color: #6366f1;
+}
+
+.stage-teal {
+    color: #10b981;
+    margin-left: 6px;
+}
+
+.header span {
+    font-size: 22px;
+    opacity: 0.6;
+}
+
+/* ===== GRID LAYOUT ===== */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+    width: 100%;
+}
+
+/* ===== CARDS ===== */
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.camera-card {
+    height: 420px;
+}
+
+/* CAMERA */
+.camera-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+/* REFERENCE */
+.reference-card {
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    padding: 0;
+}
+
+.reference-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* ===== SENTENCE CARD ===== */
+.sentence-card {
+    margin-top: 16px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px 24px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sentence-card label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.sentence-box {
+    margin-top: 10px;
+    min-height: 52px;
+    padding: 14px 18px;
+    background: #f9fafb;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1a1a2e;
+    border: 1.5px solid #e5e7eb;
+    letter-spacing: 0.3px;
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: -0.1px;
+}
+
+.primary {
+    background: #eef2ff;
+    color: #6366f1;
+    border: 1.5px solid #c7d2fe;
+}
+
+.primary:hover {
+    background: #6366f1;
+    color: #ffffff;
+    border-color: #6366f1;
+}
+
+.warning {
+    background: #fff7ed;
+    color: #ea580c;
+    border: 1.5px solid #fed7aa;
+}
+
+.warning:hover {
+    background: #ea580c;
+    color: #ffffff;
+    border-color: #ea580c;
+}
+
+.danger {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1.5px solid #fecaca;
+}
+
+.danger:hover {
+    background: #dc2626;
+    color: #ffffff;
+    border-color: #dc2626;
+}
+
+.success {
+    background: #ecfdf5;
+    color: #059669;
+    border: 1.5px solid #a7f3d0;
+}
+
+.success:hover {
+    background: #059669;
+    color: #ffffff;
+    border-color: #059669;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
