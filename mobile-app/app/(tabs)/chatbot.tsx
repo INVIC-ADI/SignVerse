@@ -33,6 +33,7 @@ export default function ChatbotScreen() {
   const [recording, setRecording] = useState<Audio.Recording | null>(null);
   const [isSTTLoading, setIsSTTLoading] = useState(false);
   const [isHindi, setIsHindi] = useState(false);
+  const [isLocalMode, setIsLocalMode] = useState(false);
   const videoRef = useRef<Video>(null);
 
   const sendMessage = async (text: string = inputText) => {
@@ -45,7 +46,7 @@ export default function ChatbotScreen() {
       messageToSend = translated;
     }
 
-    const mode = 'gemini'; // Force gemini for multilingual support
+    const mode = isLocalMode ? 'local' : 'gemini';
 
     const newMessage: Message = {
       id: Date.now().toString(),
@@ -232,12 +233,20 @@ export default function ChatbotScreen() {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>SignVerse Chat</Text>
-        <TouchableOpacity 
-            style={[styles.langToggle, isHindi ? styles.langToggleActive : null]}
-            onPress={() => setIsHindi(!isHindi)}
-        >
-            <Text style={styles.langToggleText}>{isHindi ? 'हिन्दी (HI)' : 'English (EN)'}</Text>
-        </TouchableOpacity>
+        <View style={styles.headerControls}>
+          <TouchableOpacity 
+              style={[styles.langToggle, isLocalMode ? styles.langToggleActive : null]}
+              onPress={() => setIsLocalMode(!isLocalMode)}
+          >
+              <Text style={styles.langToggleText}>{isLocalMode ? 'Local LLM' : 'Gemini AI'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+              style={[styles.langToggle, isHindi ? styles.langToggleActive : null]}
+              onPress={() => setIsHindi(!isHindi)}
+          >
+              <Text style={styles.langToggleText}>{isHindi ? 'हिन्दी (HI)' : 'English (EN)'}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View style={styles.videoContainer}>
@@ -427,19 +436,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    gap: 12,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderBottomColor: '#f0f2f5',
   },
   headerTitle: {
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 20,
+    fontWeight: '800',
     color: '#1a1a2e',
+  },
+  headerControls: {
+    flexDirection: 'row',
+    gap: 8,
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   langToggle: {
     paddingHorizontal: 12,

@@ -39,9 +39,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="translator"
         options={{
-          href: null, // Hide the default explore tab
+          title: 'Translator',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="arrow.2.circlepath" color={color} />,
         }}
       />
     </Tabs>

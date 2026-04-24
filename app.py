@@ -24,7 +24,7 @@ CORS(app) # Crucial for mobile app access
 # ElevenLabs Setup
 # ==========================
 # Leave space for the user to paste their API key or use .env
-ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "sk_0a8b65353f77da936c2c3674d535fc9c216eb2ee44bd8952")
+ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY", "sk_02c32ceb42bb4517649f643abc7e18ce120586d8f2700341")
 elevenlabs_client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
 
 # ==========================
@@ -129,8 +129,8 @@ def process_and_predict(frame):
 # ==========================
 
 @app.route("/")
-def sign_page():
-    return render_template("sign.html")
+def index():
+    return render_template("landing.html")
 
 @app.route("/chatbot")
 def chatbot_page():

@@ -46,6 +46,7 @@ const transFetchBtn = document.getElementById("transFetchBtn");
 const transCopyBtn = document.getElementById("transCopyBtn");
 const transToggleCameraBtn = document.getElementById("transToggleCameraBtn");
 const transStopBtn = document.getElementById("transStopBtn");
+const transVoiceBtn = document.getElementById("transVoiceBtn"); // Added
 
 // ================= VIEW SWITCHER =================
 window.switchView = (view) => {
@@ -488,33 +489,121 @@ clearBtn.onclick = async () => {
 
 replayBtn.onclick = () => { if (lastVideos.length > 0) playVideoSequence(lastVideos); };
 
-// Voice (STT) Code (simplified/compact)
-let mediaRecorder; let audioChunks = []; let isRecording = false;
-voiceBtn.onclick = async () => { if (!isRecording) startRecording(); else stopRecording(); };
-async function startRecording() {
+// ================= VOICE (STT) LOGIC =================
+// Refactored to handle both Chatbot and Translator inputs
+let mediaRecorder; 
+let audioChunks = []; 
+let isRecording = false;
+let currentVoiceTarget = null; // 'chat' or 'translator'
+let recordingTimeout;
+
+function updateVoiceBtnUI(active, target, processing = false) {
+    const btn = target === 'chat' ? voiceBtn : transVoiceBtn;
+    if (processing) {
+        btn.innerHTML = "⏳";
+        btn.classList.remove("recording");
+        btn.disabled = true;
+    } else if (active) {
+        btn.innerHTML = "⏹️";
+        btn.classList.add("recording");
+        btn.disabled = false;
+    } else {
+        btn.innerHTML = "🎙️";
+        btn.classList.remove("recording");
+        btn.disabled = false;
+    }
+}
+
+async function startRecording(target) {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder = new MediaRecorder(stream);
         audioChunks = [];
+        currentVoiceTarget = target;
+
         mediaRecorder.ondataavailable = (e) => audioChunks.push(e.data);
-        mediaRecorder.onstop = uploadAudio;
+        mediaRecorder.onstop = () => {
+            stream.getTracks().forEach(track => track.stop());
+            uploadAudio(currentVoiceTarget);
+        };
+        
         mediaRecorder.start();
-        isRecording = true; voiceBtn.innerHTML = "⏹️";
-    } catch (err) {}
+        isRecording = true;
+        updateVoiceBtnUI(true, target);
+        addNotice(`🎙️ Recording (${target})...`);
+
+        // Automatically stop after 30 seconds
+        recordingTimeout = setTimeout(() => {
+            if (isRecording) {
+                stopRecording();
+                addNotice("⏱️ Auto-stopped recording.");
+            }
+        }, 30000);
+
+    } catch (err) {
+        addNotice("❌ Microphone access denied.");
+    }
 }
-function stopRecording() { mediaRecorder.stop(); isRecording = false; voiceBtn.innerHTML = "🎙️"; }
-async function uploadAudio() {
+
+function stopRecording() {
+    if (mediaRecorder && isRecording) {
+        clearTimeout(recordingTimeout);
+        mediaRecorder.stop();
+        isRecording = false;
+        updateVoiceBtnUI(false, currentVoiceTarget, true); // Set to processing
+    }
+}
+
+async function uploadAudio(target) {
+    if (audioChunks.length === 0) {
+        updateVoiceBtnUI(false, target);
+        return;
+    }
+    
+    addNotice("⏳ Processing audio...");
+    
     const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
     const formData = new FormData();
     formData.append('audio', audioBlob, 'recording.wav');
     formData.append('language_code', langToggle.checked ? "hin" : "eng");
+
     try {
         const res = await fetch("/stt", { method: "POST", body: formData });
         const data = await res.json();
+        
         if (data.text) {
-            addMessage(`🎙️ ${data.text}`, "user");
-            const videos = await getSignVideos(langToggle.checked ? await translateText(data.text, "English") : data.text);
-            playVideoSequence(videos);
+            if (target === 'chat') {
+                // Chatflow: add message, translate if needed, and play
+                input.value = data.text;
+                sendMessage();
+            } else if (target === 'translator') {
+                // Translator flow: just put in textarea
+                if (transInput) {
+                    transInput.value = data.text;
+                    addNotice("✨ Voice text captured in translator.");
+                }
+            }
+        } else {
+            addNotice("❌ Could not understand audio. Try again.");
         }
-    } catch (err) {}
+    } catch (err) {
+        addNotice("❌ STT Error.");
+    } finally {
+        updateVoiceBtnUI(false, target); // Reset to default state
+    }
+}
+
+// Attach event listeners
+if (voiceBtn) {
+    voiceBtn.onclick = () => {
+        if (!isRecording) startRecording('chat');
+        else stopRecording();
+    };
+}
+
+if (transVoiceBtn) {
+    transVoiceBtn.onclick = () => {
+        if (!isRecording) startRecording('translator');
+        else stopRecording();
+    };
 }

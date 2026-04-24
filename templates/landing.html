@@ -3,128 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignVerse | All the Level Ups You've Been Waiting For</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>SignVerse | Speak Without Words</title>
+    <meta name="description" content="SignVerse — AI-powered real-time sign language recognition and multilingual communication assistant.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='landing/style.css') }}">
 </head>
 <body>
-    
-    <header class="v-navbar">
-        <div class="v-links">
-            <a href="#features" class="v-link">Features</a>
-            <a href="/chatbot" class="v-link">Chatbot</a>
-            <a href="/" class="v-link">Detection</a>
+
+    <!-- NAVBAR -->
+    <header class="sv-nav" id="sv-nav">
+        <div class="sv-nav-brand">
+            <img src="{{ url_for('static', filename='sign/logo11.png') }}" alt="SignVerse Logo" class="sv-nav-logo" />
+            <span class="sv-nav-name">SignVerse</span>
         </div>
-        <div class="v-logo-area">
-            <img src="{{ url_for('static', filename='sign/logo11.png') }}" class="v-logo" alt="SignVerse">
+        <nav class="sv-nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#stats">Impact</a>
+        </nav>
+        <div class="sv-nav-actions">
+            <a href="/chatbot" class="sv-nav-login">Sign In</a>
+            <a href="/chatbot" class="sv-nav-cta">Get Started</a>
         </div>
     </header>
 
-    <main class="v-hero">
-        <div class="v-hero-text">
-            <h1 class="v-title">All the <span class="v-accent-text">Level Ups</span><br>You've Been Waiting for</h1>
-            <p class="v-subtitle">The first professional-grade AI solution for seamless sign language integration into daily digital life.</p>
-            <div class="v-cta-row">
-                <a href="/chatbot" class="v-btn-buy">GET STARTED</a>
-                <div class="v-tag">New Evolution</div>
+    <!-- HERO -->
+    <section class="sv-hero">
+        <div class="sv-orb sv-orb-1"></div>
+        <div class="sv-orb sv-orb-2"></div>
+        <div class="sv-orb sv-orb-3"></div>
+        <div class="sv-hero-glass">
+            <div class="sv-badge">✦ New · Sign Language AI Platform</div>
+            <p class="sv-hero-eyebrow">The future of silent communication</p>
+            <h1 class="sv-hero-title">
+                <span class="sv-title-line">Speak Without</span>
+                <span class="sv-title-main">W<span class="sv-o-pill">O</span>RDS</span>
+                <span class="sv-title-line">Connect With <span class="sv-glow-text">Everyone.</span></span>
+            </h1>
+            <p class="sv-hero-sub">SignVerse uses real-time AI to bridge the gap between sign language and spoken language — empowering communication for all.</p>
+            <div class="sv-hero-ctas">
+                <a href="/chatbot" class="sv-cta-primary">Start Signing Free →</a>
+                <a href="/" class="sv-cta-ghost">Try Detection</a>
+            </div>
+            <div class="sv-floaters">
+                <div class="sv-floater sv-floater-1"><div class="sv-floater-inner">🤟</div><div class="sv-floater-label">Sign Language</div></div>
+                <div class="sv-floater sv-floater-2"><div class="sv-floater-inner">🤖</div><div class="sv-floater-label">AI Powered</div></div>
+                <div class="sv-floater sv-floater-3"><div class="sv-floater-inner">🌍</div><div class="sv-floater-label">Multilingual</div></div>
+                <div class="sv-floater sv-floater-4"><div class="sv-floater-inner">🎙️</div><div class="sv-floater-label">Voice & Sign</div></div>
+                <div class="sv-floater sv-floater-5"><div class="sv-floater-inner">✨</div><div class="sv-floater-label">Real-Time</div></div>
             </div>
         </div>
-        <div class="v-hero-img-wrap">
-            <!-- Simulated Pro Graphic -->
-            <div class="v-hero-glow"></div>
-            <div class="v-pro-card">
-                <div class="v-pro-header">SignVerse Pro</div>
-                <div class="v-pro-stat">V.2.0</div>
+        <div class="sv-scroll-hint">
+            <div class="sv-scroll-icon"><div class="sv-scroll-line"></div></div>
+            <span>scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="sv-stats" id="stats">
+        <div class="sv-stats-inner">
+            <div class="sv-stat-box"><div class="sv-stat-num">99<span class="sv-stat-unit">%</span></div><div class="sv-stat-desc">Prediction Accuracy</div></div>
+            <div class="sv-stat-divider"></div>
+            <div class="sv-stat-box"><div class="sv-stat-num">2<span class="sv-stat-unit">x</span></div><div class="sv-stat-desc">Languages Supported</div></div>
+            <div class="sv-stat-divider"></div>
+            <div class="sv-stat-box"><div class="sv-stat-num">&lt;1<span class="sv-stat-unit">s</span></div><div class="sv-stat-desc">Detection Speed</div></div>
+            <div class="sv-stat-divider"></div>
+            <div class="sv-stat-box"><div class="sv-stat-num">26<span class="sv-stat-unit">+</span></div><div class="sv-stat-desc">ASL Signs Recognized</div></div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="sv-marquee-section">
+        <div class="sv-marquee-label">✦ What SignVerse Can Do</div>
+        <div class="sv-marquee-track">
+            <div class="sv-marquee-inner sv-scroll-left">
+                <div class="sv-mcard sv-mcard-purple"><span class="sv-mcard-icon">🎥</span><div><div class="sv-mcard-title">Real-Time Detection</div><div class="sv-mcard-sub">30fps MediaPipe hand tracking</div></div></div>
+                <div class="sv-mcard sv-mcard-blue"><span class="sv-mcard-icon">🤖</span><div><div class="sv-mcard-title">Gemini AI Chat</div><div class="sv-mcard-sub">Contextual AI conversation</div></div></div>
+                <div class="sv-mcard sv-mcard-teal"><span class="sv-mcard-icon">🌍</span><div><div class="sv-mcard-title">Hindi & English</div><div class="sv-mcard-sub">Seamless bilingual support</div></div></div>
+                <div class="sv-mcard sv-mcard-pink"><span class="sv-mcard-icon">🧍</span><div><div class="sv-mcard-title">Sign Avatar</div><div class="sv-mcard-sub">Text to animated signing</div></div></div>
+                <div class="sv-mcard sv-mcard-purple"><span class="sv-mcard-icon">🎙️</span><div><div class="sv-mcard-title">Voice Input</div><div class="sv-mcard-sub">ElevenLabs speech-to-text</div></div></div>
+                <div class="sv-mcard sv-mcard-blue"><span class="sv-mcard-icon">🔄</span><div><div class="sv-mcard-title">Translator Mode</div><div class="sv-mcard-sub">Dedicated sign ↔ text workspace</div></div></div>
+                <div class="sv-mcard sv-mcard-teal"><span class="sv-mcard-icon">📷</span><div><div class="sv-mcard-title">PIP Camera</div><div class="sv-mcard-sub">Live feed in all views</div></div></div>
+                <div class="sv-mcard sv-mcard-pink"><span class="sv-mcard-icon">⚡</span><div><div class="sv-mcard-title">Low Latency</div><div class="sv-mcard-sub">Sub-second predictions</div></div></div>
+                <div class="sv-mcard sv-mcard-purple"><span class="sv-mcard-icon">🎥</span><div><div class="sv-mcard-title">Real-Time Detection</div><div class="sv-mcard-sub">30fps MediaPipe hand tracking</div></div></div>
+                <div class="sv-mcard sv-mcard-blue"><span class="sv-mcard-icon">🤖</span><div><div class="sv-mcard-title">Gemini AI Chat</div><div class="sv-mcard-sub">Contextual AI conversation</div></div></div>
+                <div class="sv-mcard sv-mcard-teal"><span class="sv-mcard-icon">🌍</span><div><div class="sv-mcard-title">Hindi & English</div><div class="sv-mcard-sub">Seamless bilingual support</div></div></div>
+                <div class="sv-mcard sv-mcard-pink"><span class="sv-mcard-icon">🧍</span><div><div class="sv-mcard-title">Sign Avatar</div><div class="sv-mcard-sub">Text to animated signing</div></div></div>
+                <div class="sv-mcard sv-mcard-purple"><span class="sv-mcard-icon">🎙️</span><div><div class="sv-mcard-title">Voice Input</div><div class="sv-mcard-sub">ElevenLabs speech-to-text</div></div></div>
+                <div class="sv-mcard sv-mcard-blue"><span class="sv-mcard-icon">🔄</span><div><div class="sv-mcard-title">Translator Mode</div><div class="sv-mcard-sub">Dedicated sign ↔ text workspace</div></div></div>
+                <div class="sv-mcard sv-mcard-teal"><span class="sv-mcard-icon">📷</span><div><div class="sv-mcard-title">PIP Camera</div><div class="sv-mcard-sub">Live feed in all views</div></div></div>
+                <div class="sv-mcard sv-mcard-pink"><span class="sv-mcard-icon">⚡</span><div><div class="sv-mcard-title">Low Latency</div><div class="sv-mcard-sub">Sub-second predictions</div></div></div>
             </div>
         </div>
-    </main>
-
-    <section id="features" class="v-bento">
-        <div class="v-bento-grid">
-            <!-- Feature 1: Main Power -->
-            <div class="v-card v-card-large v-bg-dark">
-                <div class="v-card-content">
-                    <h2 class="v-card-title">Much More <span class="v-accent-text">Powerful</span></h2>
-                    <div class="v-stats-row">
-                        <div class="v-stat-item">
-                            <div class="v-stat-val">10x</div>
-                            <div class="v-stat-label">AI Logic Power</div>
-                        </div>
-                        <div class="v-stat-arrow">↑</div>
-                        <div class="v-stat-item">
-                            <div class="v-stat-val">40x</div>
-                            <div class="v-stat-label">Context Memory</div>
-                        </div>
-                        <div class="v-stat-arrow">↑</div>
-                        <div class="v-stat-item">
-                            <div class="v-stat-val">6x</div>
-                            <div class="v-stat-label">Response Speed</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature 2: No Latency -->
-            <div class="v-card v-card-small v-bg-dark glow-blue">
-                <div class="v-card-content">
-                    <h3 class="v-card-min-title">Instant</h3>
-                    <h2 class="v-card-title">No Latency</h2>
-                    <div class="v-viz v-viz-ring"></div>
-                </div>
-            </div>
-
-            <!-- Feature 3: No Noise -->
-            <div class="v-card v-card-small v-bg-dark glow-teal">
-                <div class="v-card-content">
-                    <h3 class="v-card-min-title">Pure</h3>
-                    <h2 class="v-card-title">Clear Signs</h2>
-                    <div class="v-viz v-viz-pulse"></div>
-                </div>
-            </div>
-
-            <!-- Feature 4: Efficiency -->
-            <div class="v-card v-card-small v-bg-dark">
-                <div class="v-card-content">
-                    <div class="v-stat-val">99% +</div>
-                    <div class="v-stat-label">Prediction Accuracy</div>
-                </div>
-            </div>
-
-            <!-- Feature 5: Multilingual -->
-            <div class="v-card v-card-small v-bg-dark glow-pink">
-                <div class="v-card-content">
-                    <div class="v-stat-val">20% +</div>
-                    <div class="v-stat-label">Faster Conversions</div>
-                </div>
+        <div class="sv-marquee-track" style="margin-top:16px;">
+            <div class="sv-marquee-inner sv-scroll-right">
+                <div class="sv-mcard sv-mcard-slate"><span class="sv-mcard-icon">🔐</span><div><div class="sv-mcard-title">Privacy First</div><div class="sv-mcard-sub">All processing on-device</div></div></div>
+                <div class="sv-mcard sv-mcard-purple"><span class="sv-mcard-icon">🤝</span><div><div class="sv-mcard-title">Accessibility</div><div class="sv-mcard-sub">Built for the deaf community</div></div></div>
+                <div class="sv-mcard sv-mcard-blue"><span class="sv-mcard-icon">📊</span><div><div class="sv-mcard-title">99% Accuracy</div><div class="sv-mcard-sub">Trained on real ASL data</div></div></div>
+                <div class="sv-mcard sv-mcard-teal"><span class="sv-mcard-icon">🧠</span><div><div class="sv-mcard-title">Smart Context</div><div class="sv-mcard-sub">AI remembers conversation</div></div></div>
+                <div class="sv-mcard sv-mcard-pink"><span class="sv-mcard-icon">📱</span><div><div class="sv-mcard-title">Mobile Ready</div><div class="sv-mcard-sub">Expo React Native app</div></div></div>
+                <div class="sv-mcard sv-mcard-slate"><span class="sv-mcard-icon">🌐</span><div><div class="sv-mcard-title">Web Platform</div><div class="sv-mcard-sub">Runs in any browser</div></div></div>
+                <div class="sv-mcard sv-mcard-purple"><span class="sv-mcard-icon">💬</span><div><div class="sv-mcard-title">Chat History</div><div class="sv-mcard-sub">Persistent local storage</div></div></div>
+                <div class="sv-mcard sv-mcard-blue"><span class="sv-mcard-icon">🎯</span><div><div class="sv-mcard-title">Instant Response</div><div class="sv-mcard-sub">Flask + Gemini API backend</div></div></div>
+                <div class="sv-mcard sv-mcard-slate"><span class="sv-mcard-icon">🔐</span><div><div class="sv-mcard-title">Privacy First</div><div class="sv-mcard-sub">All processing on-device</div></div></div>
+                <div class="sv-mcard sv-mcard-purple"><span class="sv-mcard-icon">🤝</span><div><div class="sv-mcard-title">Accessibility</div><div class="sv-mcard-sub">Built for the deaf community</div></div></div>
+                <div class="sv-mcard sv-mcard-blue"><span class="sv-mcard-icon">📊</span><div><div class="sv-mcard-title">99% Accuracy</div><div class="sv-mcard-sub">Trained on real ASL data</div></div></div>
+                <div class="sv-mcard sv-mcard-teal"><span class="sv-mcard-icon">🧠</span><div><div class="sv-mcard-title">Smart Context</div><div class="sv-mcard-sub">AI remembers conversation</div></div></div>
+                <div class="sv-mcard sv-mcard-pink"><span class="sv-mcard-icon">📱</span><div><div class="sv-mcard-title">Mobile Ready</div><div class="sv-mcard-sub">Expo React Native app</div></div></div>
+                <div class="sv-mcard sv-mcard-slate"><span class="sv-mcard-icon">🌐</span><div><div class="sv-mcard-title">Web Platform</div><div class="sv-mcard-sub">Runs in any browser</div></div></div>
+                <div class="sv-mcard sv-mcard-purple"><span class="sv-mcard-icon">💬</span><div><div class="sv-mcard-title">Chat History</div><div class="sv-mcard-sub">Persistent local storage</div></div></div>
+                <div class="sv-mcard sv-mcard-blue"><span class="sv-mcard-icon">🎯</span><div><div class="sv-mcard-title">Instant Response</div><div class="sv-mcard-sub">Flask + Gemini API backend</div></div></div>
             </div>
         </div>
     </section>
 
-    <footer class="v-footer">
-        <p>SignVerse &copy; 2026. Part of the Hand2Help Evolution. References to performance are comparative to traditional ML models.</p>
+    <!-- FEATURES — COVERFLOW CAROUSEL -->
+    <section class="sv-features" id="features">
+        <div class="sv-section-header">
+            <div class="sv-section-badge">Core Capabilities</div>
+            <h2 class="sv-section-title">Everything You Need to <span class="sv-glow-text">Communicate</span></h2>
+            <p class="sv-section-sub">Designed for accessibility, built for precision, powered by state-of-the-art AI.</p>
+        </div>
+
+        <div class="sv-arc-scene">
+            <div class="sv-arc-stage" id="arcStage">
+                <div class="sv-arc-card" data-index="0">
+                    <div class="sv-feat-glow sv-glow-purple"></div>
+                    <div class="sv-arc-icon">🎥</div>
+                    <h3>Real-Time Detection</h3>
+                    <p>MediaPipe-based engine detecting ASL at 30fps with near-perfect accuracy.</p>
+                    <a href="/" class="sv-feat-link">Try detection →</a>
+                </div>
+                <div class="sv-arc-card" data-index="1">
+                    <div class="sv-feat-glow sv-glow-blue"></div>
+                    <div class="sv-arc-icon">🤖</div>
+                    <h3>Gemini AI Chatbot</h3>
+                    <p>Natural conversations powered by Google Gemini — sign, type, or speak.</p>
+                    <a href="/chatbot" class="sv-feat-link">Open Chat →</a>
+                </div>
+                <div class="sv-arc-card" data-index="2">
+                    <div class="sv-feat-glow sv-glow-teal"></div>
+                    <div class="sv-arc-icon">🌍</div>
+                    <h3>Hindi &amp; English</h3>
+                    <p>Seamlessly switch between English and Hindi across all interfaces.</p>
+                </div>
+                <div class="sv-arc-card" data-index="3">
+                    <div class="sv-feat-glow sv-glow-pink"></div>
+                    <div class="sv-arc-icon">🧍</div>
+                    <h3>Sign Avatar</h3>
+                    <p>Type any text and watch an avatar sign it back — fully accessible.</p>
+                </div>
+                <div class="sv-arc-card" data-index="4">
+                    <div class="sv-feat-glow sv-glow-purple"></div>
+                    <div class="sv-arc-icon">🔄</div>
+                    <h3>Translator Mode</h3>
+                    <p>Dedicated workspace for Text→Sign and Sign→Text with camera integration.</p>
+                    <a href="/chatbot" class="sv-feat-link">Try translator →</a>
+                </div>
+            </div>
+            <button class="sv-arc-btn sv-arc-prev" id="arcPrev">&#8249;</button>
+            <button class="sv-arc-btn sv-arc-next" id="arcNext">&#8250;</button>
+            <div class="sv-arc-dots" id="arcDots">
+                <span class="sv-arc-dot active" data-to="0"></span>
+                <span class="sv-arc-dot" data-to="1"></span>
+                <span class="sv-arc-dot" data-to="2"></span>
+                <span class="sv-arc-dot" data-to="3"></span>
+                <span class="sv-arc-dot" data-to="4"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="sv-how" id="how-it-works">
+        <div class="sv-section-header">
+            <div class="sv-section-badge">Simple by Design</div>
+            <h2 class="sv-section-title">How <span class="sv-glow-text">SignVerse</span> Works</h2>
+        </div>
+        <div class="sv-how-steps">
+            <div class="sv-step">
+                <div class="sv-step-num">01</div>
+                <div class="sv-step-content"><h3>Enable Camera</h3><p>Allow camera access and our live feed activates with a PIP overlay.</p></div>
+            </div>
+            <div class="sv-step-line"></div>
+            <div class="sv-step">
+                <div class="sv-step-num">02</div>
+                <div class="sv-step-content"><h3>Sign to the Camera</h3><p>Perform ASL signs — the AI detects each character in real-time.</p></div>
+            </div>
+            <div class="sv-step-line"></div>
+            <div class="sv-step">
+                <div class="sv-step-num">03</div>
+                <div class="sv-step-content"><h3>Chat or Translate</h3><p>Send to the AI chatbot or use the Translator for sign animations.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="sv-cta-section">
+        <div class="sv-cta-glow"></div>
+        <div class="sv-cta-content">
+            <h2>Ready to <span class="sv-glow-text">Break the Barrier?</span></h2>
+            <p>Start communicating in sign language with the power of AI. No signup required.</p>
+            <div class="sv-cta-buttons">
+                <a href="/chatbot" class="sv-cta-primary">Launch Chatbot →</a>
+                <a href="/" class="sv-cta-ghost">Try Detection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="sv-footer">
+        <div class="sv-footer-inner">
+            <div class="sv-footer-brand">
+                <img src="{{ url_for('static', filename='sign/logo11.png') }}" alt="SignVerse" class="sv-footer-logo" />
+                <span>SignVerse</span>
+            </div>
+            <p class="sv-footer-tagline">Empowering silent voices with AI.</p>
+            <p class="sv-footer-copy">&copy; 2026 SignVerse · Part of the Hand2Help Initiative</p>
+        </div>
     </footer>
 
     <script>
-        // Interactive glow follow
-        document.querySelectorAll('.v-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
+        // Nav scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('sv-nav').classList.toggle('scrolled', window.scrollY > 60);
         });
 
-        // Entrance animations
-        window.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('.v-hero').style.opacity = '0';
-            setTimeout(() => {
-                document.querySelector('.v-hero').style.transition = 'opacity 1s ease, transform 1s ease';
-                document.querySelector('.v-hero').style.opacity = '1';
-                document.querySelector('.v-hero').style.transform = 'translateY(0)';
-            }, 100);
-        });
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.sv-step, .sv-stat-box');
+        const revealObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('sv-revealed');
+                    revealObs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => revealObs.observe(el));
+
+        // ── WIDE CIRCULAR ORBIT CAROUSEL ───────────────────────────
+        (function() {
+            const stage    = document.getElementById('arcStage');
+            const cards    = Array.from(stage.querySelectorAll('.sv-arc-card'));
+            const dots     = Array.from(document.querySelectorAll('.sv-arc-dot'));
+            const N        = cards.length;
+            const RADIUS   = 450;   // px — Very wide to avoid overlap
+            let current    = 0;
+            let autoTimer;
+
+            function positionCards(activeIdx) {
+                cards.forEach((card, i) => {
+                    const step  = 360 / N;
+                    // Active card at 270° = top (negative Y in CSS coords relative to bottom origin)
+                    const angle = (i - activeIdx) * step + 270;
+                    const rad   = angle * (Math.PI / 180);
+                    
+                    const x     = Math.cos(rad) * RADIUS;
+                    const y     = Math.sin(rad) * RADIUS;
+
+                    // Distance-based styling for scale and opacity
+                    let d = i - activeIdx;
+                    if (d >  N / 2) d -= N;
+                    if (d < -N / 2) d += N;
+                    const dist  = Math.abs(d) / (N / 2);
+
+                    const scale   = 1 - dist * 0.3;
+                    const opacity = 1 - dist * 0.6;
+                    const zIndex  = Math.round((1 - dist) * 10);
+
+                    card.style.transition = 'transform 0.8s cubic-bezier(0.22,1,0.36,1), opacity 0.8s ease';
+                    card.style.transform  = `translate(${x}px, ${y}px) scale(${scale})`;
+                    card.style.opacity    = opacity;
+                    card.style.zIndex     = zIndex;
+                    card.classList.toggle('sv-arc-active', i === activeIdx);
+                });
+                dots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+            }
+
+            function goTo(idx) {
+                current = ((idx % N) + N) % N;
+                positionCards(current);
+                resetAuto();
+            }
+
+            function resetAuto() {
+                clearInterval(autoTimer);
+                autoTimer = setInterval(() => goTo(current + 1), 3000);
+            }
+
+            document.getElementById('arcNext').addEventListener('click', () => goTo(current + 1));
+            document.getElementById('arcPrev').addEventListener('click', () => goTo(current - 1));
+            dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.to)));
+            cards.forEach((card, i) => card.addEventListener('click', () => { if (i !== current) goTo(i); }));
+
+            positionCards(0);
+            resetAuto();
+        })();
     </script>
 </body>
 </html>

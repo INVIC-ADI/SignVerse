@@ -1,7 +1,7 @@
 export const CONFIG = {
   // Use your computer's local IP address provided (10.215.219.89)
   // Ensure the Flask server is running on the same network
-  BASE_URL: 'http://10.215.219.89:5000',
+  BASE_URL: 'http://192.168.137.104:5000',
   
   // Endpoints
   ENDPOINTS: {

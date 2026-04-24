@@ -5,8 +5,8 @@ from google.genai import types
 # ==========================
 # CONFIG — paste your Gemini API key here
 # ==========================
-GEMINI_API_KEY = "AIzaSyBdhBuSdD1q1oqSyKyOUOz9qMc-jIXn9BY"
-GEMINI_MODEL   = "gemini-2.5-flash"
+GEMINI_API_KEY = "AIzaSyARVFvUYE-orX5KtSahg1AsVEGNQmvfDpQ"
+GEMINI_MODEL   = "gemini-2.5-flash-lite"
 
 # Initialize Gemini Client
 client = genai.Client(api_key=GEMINI_API_KEY)
@@ -28,9 +28,14 @@ Rules:
     }
 ]
 
+gemini_conversation = []
+
 SYSTEM_PROMPT = (
-    "You are SignVerse, a helpful sign language assistant. "
-    "Answer directly and relevantly. Maximum 6 words. No punctuation."
+    "You are SignVerse, an intelligent, friendly, and helpful sign language assistant. "
+    "Always provide clear, concise, and helpful answers. "
+    "Maintain a friendly tone. "
+    "Do NOT use punctuation in short answers unless absolutely necessary for clarity, "
+    "but for longer explanations, format them nicely."
 )
 
 
@@ -38,6 +43,8 @@ SYSTEM_PROMPT = (
 # Gemini (global model)
 # ==========================
 def gemini_chatbot_response(user_text):
+    global gemini_conversation
+
     if not user_text.strip():
         return {"reply": "Unknown"}
 
@@ -47,30 +54,30 @@ def gemini_chatbot_response(user_text):
     if "your name" in user_lower:
         return {"reply": "My name SignVerse"}
     if "pccoe" in user_lower or "address" in user_lower:
-        return {"reply": "Pimpri Pune Maharashtra"}
+        return {"reply": "PCCOE Pune Maharashtra"}
+
+    gemini_conversation.append(user_text)
 
     try:
         response = client.models.generate_content(
             model=GEMINI_MODEL,
-            contents=user_text,
+            contents=gemini_conversation,
             config=types.GenerateContentConfig(
                 system_instruction=SYSTEM_PROMPT,
                 temperature=0.5,
                 top_p=0.9,
-                max_output_tokens=60
+                max_output_tokens=300
             )
         )
         
-        print("GEMINI RAW:", response.text)
         reply = response.text.strip()
-
-        # Trim to 6 words, first line only
-        reply = reply.split("\n")[0]
-        reply = " ".join(reply.split()[:6])
+        print("GEMINI RAW:", reply)
+        gemini_conversation.append(reply)
 
     except Exception as e:
         print("GEMINI ERROR:", e)
         reply = "Gemini error try again"
+        gemini_conversation.pop() # Remove the user text if failed
 
     return {"reply": reply}
 
